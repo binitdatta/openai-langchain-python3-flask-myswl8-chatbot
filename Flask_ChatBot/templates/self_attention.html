@@ -1,0 +1,27 @@
+<!-- templates/self_attention.html -->
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<!-- templates/genai_timeline.html -->
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Understanding Self-Attention in Generative AI</h2>
+
+  <div class="row">
+    {% for section in self_attention_sections %}
+      <div class="col-md-6 mb-4">
+        <div class="card border-{{ section.bgColor }}">
+          <div class="card-header bg-{{ section.bgColor }} text-white">
+            <h5 class="mb-0">{{ section.title }}</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ section.description }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

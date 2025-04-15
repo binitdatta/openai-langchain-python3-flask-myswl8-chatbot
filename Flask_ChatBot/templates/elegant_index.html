@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Python LangChain MySQL ChatBot</title>
+  <base href="/">
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Muli:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+<link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Flattern
+  * Updated: May 30 2023 with Bootstrap v5.3.0
+  * Template URL: https://bootstrapmade.com/flattern-multipurpose-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a
+            href="mailto:contact@example.com">contact@example.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
+
+      <div class="logo">
+        <h1 class="text-light"><span><a href="index.html">RKRC</a></span></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <a href="/app-dynamic-search" class="nav-link" class="btn btn-primary active" role="button">Home</a>
+          <a href="/app-gen-ai-timeline" class="nav-link" class="btn btn-primary active" role="button">Gen AI Timeline</a>
+          <a href="/app-neural-networks-and-human-brain" class="nav-link" class="btn btn-primary active" role="button">Neural Networks</a>
+          <a href="/app-nlp-fundamentals" class="nav-link" class="btn btn-primary active" role="button">Natural Language Processing</a>
+          <a href="/app-self-attention" class="nav-link" class="btn btn-primary active" role="button">Self Attention</a>
+          <a href="/architecture" class="nav-link" class="btn btn-primary active" role="button">Architecture</a>
+
+        <li class="dropdown"><a href="#"><span>Royal Kolkata Turf Dashboards</span> <i class="bi bi-chevron-down"></i></a>
+        </li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg);">
+          <div class="carousel-container">
+            <div class="carousel-content animate__animated animate__fadeInUp">
+              <h2>Welcome to <span>LangChain ChatBot Application</span></h2>
+              <p>We will cover An Flask UI, One Flask REST API</p>
+              <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.jpg);">
+          <div class="carousel-container">
+            <div class="carousel-content animate__animated animate__fadeInUp">
+              <h2>How It Works</h2>
+              <p>The Flask UI demonstrates how Python Flask can use LangChain to answer questions using Data from MySQL 8 DB Table</p>
+              <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.jpg);">
+          <div class="carousel-container">
+            <div class="carousel-content animate__animated animate__fadeInUp">
+              <h2>What Is Flask</h2>
+              <p>Spring AI makes it easy to implement Open AI Functions for Retreival Augmented Generation (RAG)</p>
+              <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bx bx-left-arrow" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bx bx-right-arrow" aria-hidden="true"></span>
+      </a>
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <app-root></app-root>
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box" data-aos="fade-up">
+              <div class="icon"><i class="bi bi-briefcase"></i></div>
+              <h4 class="title"><a href="">Authentication</a></h4>
+              <p class="description">Is When A Mobile, Voice Device, RAF Gun or Browser Logs In To an Active Product.
+                Authentication Includes External IdPs as well.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bi bi-card-checklist"></i></div>
+              <h4 class="title"><a href="">API Gateway</a></h4>
+              <p class="description">All Manhattan APIs are fronted by an API Gateway. The API Gateway captures all
+                calls, packages it with other metadata and publishes to a dedicated PubSub Topic</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="bi bi-bar-chart"></i></div>
+              <h4 class="title"><a href="">How Many Topics</a></h4>
+              <p class="description">Just One <strong>Dedicated</strong> PubSub Topic for Each Customer</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="bi bi-binoculars"></i></div>
+              <h4 class="title"><a href="">How Many Subscriptions</a></h4>
+              <p class="description">Four 1. R&D 2. PSO 3. Customer 4. Ops</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+              <div class="icon"><i class="bi bi-brightness-high"></i></div>
+              <h4 class="title"><a href="">Retention</a></h4>
+              <p class="description">Google PubSub Messages Are Retained For 7 Days</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+              <div class="icon"><i class="bi bi-calendar4-week"></i></div>
+              <h4 class="title"><a href="">Message Acknowledgement</a></h4>
+              <p class="description">Is Extremely Critical and Please Read the Detailed Architecture Page</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="{{ url_for('static', filename='assets/img/cloud_pubsub.png') }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Cloud</h4>
+              <p>PubSub</p>
+              <a href="/cloud-pubsub" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="{{ url_for('static', filename='assets/img/acknowledgement.jpeg') }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Message</h4>
+              <p>Acknowledgement</p>
+              <a href="/acknowledgement" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="{{ url_for('static', filename='assets/img/authentication.avif') }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Authentication</h4>
+              <p>Details</p>
+              <a href="/authentication" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="{{ url_for('static', filename='assets/img/api_gateway.png') }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>API</h4>
+              <p>Gateway</p>
+              <a href="/api-gateway" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="{{ url_for('static', filename='assets/img/service_account.svg') }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Service Account</h4>
+              <p>Details</p>
+              <a href="/service-account" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="{{ url_for('static', filename='assets/img/session-management.png') }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Session</h4>
+              <p>Management</p>
+              <a href="/session-management" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="{{ url_for('static', filename='assets/img/CMEK.png') }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>CMEK</h4>
+              <p>Hassles</p>
+              <a href="/cmek" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="{{ url_for('static', filename='assets/img/data-masking.jpg') }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Data</h4>
+              <p>Masking</p>
+              <a href="/data-masking" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="{{ url_for('static', filename='assets/img/cpu_memory.jpeg') }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>CPU / Memory</h4>
+              <p>Metrics</p>
+              <a href="/cpu-memory" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Flattern</h3>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="/activity-stream-mobile">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/acknowledgement">Acknowledgement</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/cpu-memory">Performance Metrics</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/dup-messages">Duplicate Messages</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/message-retention">Message Retention</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="/authentication">Authentication</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/cmek">CMEK</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/data-masking">Data Masking</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/session-management">Session Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/service-account">Service Account</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Read The wiki Page</h4>
+            <p>On Activity Stream</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Flattern</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flattern-multipurpose-bootstrap-template/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+ <script src="{{ url_for('static', filename='assets/vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
+
+<!-- Template Main JS File -->
+<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+<!-- JavaScript -->
+<script>
+  async function sendMessage() {
+    const input = document.getElementById("user-input");
+    const chatBox = document.getElementById("chat-box");
+    const spinner = document.getElementById("loading-spinner");
+    const userText = input.value.trim();
+
+    if (!userText) {
+      alert("Please enter a message.");
+      return;
+    }
+
+    // Add user message bubble
+    const userMessage = document.createElement("div");
+    userMessage.className = "message user-message";
+    userMessage.textContent = userText;
+    chatBox.appendChild(userMessage);
+    input.value = "";
+
+    // Scroll to bottom
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    spinner.style.display = "inline-block"; // Show spinner
+
+    try {
+      const response = await fetch("http://127.0.0.1:5005/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userText }),
+      });
+
+      const data = await response.json();
+      const botMessage = document.createElement("div");
+      botMessage.className = "message bot-message";
+
+      if (typeof data.response === "object") {
+        botMessage.textContent = JSON.stringify(data.response, null, 4);
+      } else {
+        botMessage.textContent = data.response || "No response received.";
+      }
+
+      chatBox.appendChild(botMessage);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    } catch (error) {
+      const errorMsg = document.createElement("div");
+      errorMsg.className = "message bot-message";
+      errorMsg.textContent = `Error: ${error.message}`;
+      chatBox.appendChild(errorMsg);
+    } finally {
+      spinner.style.display = "none"; // Hide spinner
+    }
+  }
+</script>
+
+
+</body>
+
+</html>

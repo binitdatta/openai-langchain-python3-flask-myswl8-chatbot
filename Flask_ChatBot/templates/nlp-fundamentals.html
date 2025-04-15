@@ -1,0 +1,40 @@
+<!-- templates/nlp-fundamentals.html -->
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<!-- templates/genai_timeline.html -->
+<div class="container mt-4">
+  <h2 class="text-center mb-4">How Mathematics, Statistics & Other Fields Power NLP & Generative AI</h2>
+
+  <!-- Pie Chart Image Section -->
+  <div class="text-center">
+    <img src="{{ url_for('static', filename='assets/img/nlp_contributions_pie_chart.png') }}" alt="NLP Contributions Pie Chart"
+         class="img-fluid pie-chart">
+  </div>
+
+  <!-- NLP Contributions Using Bootstrap Cards -->
+  <div class="row mt-4">
+    {% for section in sections %}
+      <div class="col-md-6 mb-4">
+        <div class="card border-{{ section.bgColor }}">
+          <div class="card-header bg-{{ section.bgColor }} text-white">
+            <h5 class="mb-0">{{ section.title }}</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              {% for topic in section.topics %}
+                <li class="list-group-item">
+                  <strong>{{ topic.subTitle }}:</strong> {{ topic.description }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

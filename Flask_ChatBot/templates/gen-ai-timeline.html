@@ -1,0 +1,73 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<!-- templates/genai_timeline.html -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4">🚀 Evolution of Generative AI</h2>
+
+  <div class="row d-flex align-items-start">
+    <div class="col-md-4 iceberg-container">
+      <img src="{{ url_for('static', filename='assets/img/genai-iceberg-phases.png') }}" class="img-fluid iceberg-image"
+           alt="Generative AI Evolution Iceberg" data-bs-toggle="modal" data-bs-target="#imageModal">
+    </div>
+
+    <div class="col-md-8">
+      <div class="row">
+        {% for phase in timeline[:2] %}
+          <div class="col-md-6 mb-4">
+            <div class="card shadow-lg">
+              <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">{{ phase.year }}</h5>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-primary">{{ phase.title }}</h5>
+                <p class="card-text">{{ phase.description }}</p>
+                <ul class="list-group list-group-flush">
+                  {% for detail in phase.details %}
+                    <li class="list-group-item">{{ detail }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    {% for phase in timeline[2:] %}
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-lg">
+          <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">{{ phase.year }}</h5>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-primary">{{ phase.title }}</h5>
+            <p class="card-text">{{ phase.description }}</p>
+            <ul class="list-group list-group-flush">
+              {% for detail in phase.details %}
+                <li class="list-group-item">{{ detail }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <img src="{{ url_for('static', filename='img/genai-iceberg-phases.png') }}" class="img-fluid zoomed-image" alt="Zoomed Iceberg">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

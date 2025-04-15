@@ -1,0 +1,22 @@
+<!-- templates/chatbot.html -->
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<!-- Chat UI -->
+<div class="chat-container">
+  <h1 class="chat-title">Order Status ChatBot</h1>
+
+  <div id="chat-box" class="chat-box"></div>
+
+  <input type="text" id="user-input" placeholder="e.g., What is the status of order 12345?" />
+  <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+
+  <div class="text-center mt-3">
+    <div class="spinner-border text-primary" role="status" id="loading-spinner">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+<!-- templates/base.html -->
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<!-- templates/genai_timeline.html -->
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Neural Networks vs. Human Brain</h2>
+
+  <!-- Images Section -->
+  <div class="image-container d-flex justify-content-around mb-4">
+    <div class="image-box text-center">
+      <h4>Biological Neuron</h4>
+      <img src="{{ url_for('static', filename='assets/img/neural_network_1.png') }}" alt="Biological Neuron" class="img-fluid">
+    </div>
+    <div class="image-box text-center">
+      <h4>Artificial Neural Network</h4>
+      <img src="{{ url_for('static', filename='assets/img/neural_network_2.png') }}" alt="Artificial Neural Network" class="img-fluid">
+    </div>
+  </div>
+
+  <!-- Similarities Section -->
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-success">Similarities</h4>
+    </div>
+    {% for similarity in similarities %}
+      <div class="col-md-6">
+        <div class="card border-success mb-3">
+          <div class="card-header bg-success text-white">{{ similarity.title }}</div>
+          <div class="card-body">
+            <p class="card-text">{{ similarity.description }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Differences Section -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <h4 class="text-primary">Differences</h4>
+    </div>
+    {% for difference in differences %}
+      <div class="col-md-6">
+        <div class="card border-primary mb-3">
+          <div class="card-header bg-primary text-white">{{ difference.title }}</div>
+          <div class="card-body">
+            <p class="card-text">{{ difference.description }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
