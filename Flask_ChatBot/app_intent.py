@@ -14,6 +14,59 @@ CORS(app)
 handler = ChatModelStartHandler()
 llm = OpenAI(callbacks=[handler], model_name="gpt-4")
 
+architecture_sections = [
+    {
+        "sequence": "1.",
+        "bgColor": "primary",
+        "description": "ChatBot User navigates to the ChatBot Website http://localhost:5005"
+    },
+    {
+        "sequence": "2.",
+        "bgColor": "primary",
+        "description": "ChatBot User enters his/her Question / Message and submits the ChatBot Form"
+    },
+    {
+        "sequence": "3.",
+        "bgColor": "primary",
+        "description": "ChatBot Backend Flask API (POST) invokes OpenAI API and submits a PromptTemplate to parse the user's message into json"
+    },
+    {
+        "sequence": "4.",
+        "bgColor": "primary",
+        "description": "OpenAI API returns the parsed json to the ChatBot Backend API"
+    },
+    {
+        "sequence": "5.",
+        "bgColor": "primary",
+        "description": "ChatBot Backend parses the JSON and invokes the appropriate Flask REST API"
+    },
+    {
+        "sequence": "6.",
+        "bgColor": "primary",
+        "description": "Flask REST API executes the appropriate SQL Query against the SQL Database"
+    },
+    {
+        "sequence": "7.",
+        "bgColor": "primary",
+        "description": "SQL Operation Returns"
+    },
+    {
+        "sequence": "8.",
+        "bgColor": "primary",
+        "description": "Flask REST API rerturns to the Flask Chatbot Backend API"
+    },
+    {
+        "sequence": "9.",
+        "bgColor": "primary",
+        "description": "Flask Chatbot Backend API renders the ChatBot Front end with Chat Response"
+    },
+    {
+        "sequence": "10.",
+        "bgColor": "primary",
+        "description": " Chatbot User sees the response."
+    },
+]
+
 self_attention_sections = [
     {
         "title": "What is Self-Attention?",
@@ -601,6 +654,9 @@ def neural_network():
 def self_attention():
     return render_template("self_attention.html", self_attention_sections=self_attention_sections)
 
+@app.route('/architecture')
+def architecture():
+    return render_template("architecture.html", architecture_sections=architecture_sections)
 
 @app.route('/elg')
 def serve_html():
@@ -610,6 +666,7 @@ def serve_html():
 @app.route('/chatbot')
 def chatbot():
     return render_template('chatbot.html')
+
 
 # === LLM Setup ===
 

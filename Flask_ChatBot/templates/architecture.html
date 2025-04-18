@@ -1,0 +1,33 @@
+<!-- templates/architecture.html -->
+{% extends "base.html" %}
+
+{% block title %}Architecture Page{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Understanding The Architecture</h2>
+
+  <!-- Enlarged Image Section -->
+  <div class="text-center mb-8">
+    <img src="{{ url_for('static', filename='assets/img/architecture-2.png') }}"
+         class="img-fluid" style="max-width: 100%; height: auto; width: 1000px;"
+         alt="Architecture Diagram" data-bs-toggle="modal" data-bs-target="#imageModal">
+  </div>
+
+  <!-- Sequence Cards Section -->
+  <div class="row">
+    {% for section in architecture_sections %}
+      <div class="col-md-6 mb-4">
+        <div class="card border-{{ section.bgColor }}">
+          <div class="card-header bg-{{ section.bgColor }} text-white">
+            <h5 class="mb-0">Action</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><strong>{{ section.sequence }}{{ section.description }}</strong></p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
